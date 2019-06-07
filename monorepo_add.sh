@@ -28,8 +28,8 @@ for PARAM in $@; do
     if [ "$SUBDIRECTORY" == "" ]; then
         SUBDIRECTORY=$REMOTE
     fi
-    echo "Building branch '7.x-1.x' of the remote '$REMOTE'"
-    git checkout --detach $REMOTE/7.x-1.x
+    echo "Building branch '8.x-2.x' of the remote '$REMOTE'"
+    git checkout --detach $REMOTE/8.x-2.x
     $MONOREPO_SCRIPT_DIR/rewrite_history_into.sh $SUBDIRECTORY
     MERGE_REFS="$MERGE_REFS $(git rev-parse HEAD)"
     # Wipe the back-up of original history
@@ -37,7 +37,7 @@ for PARAM in $@; do
 done
 # Merge all master branches
 COMMIT_MSG="merge multiple repositories into an existing monorepo"$'\n'$'\n'"- merged using: 'monorepo_add.sh $@'"$'\n'"- see https://github.com/shopsys/monorepo-tools"
-git checkout 7.x-1.x
+git checkout 8.x-2.x
 echo "Merging refs: $MERGE_REFS"
 git merge --no-commit -q $MERGE_REFS --allow-unrelated-histories
 echo 'Resolving conflicts using trees of all parents'

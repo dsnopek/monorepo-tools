@@ -29,11 +29,11 @@ for PARAM in $@; do
     fi
     # Rewrite git history of master branch
     echo "Splitting repository for the remote '$REMOTE'"
-    git checkout 7.x-1.x
-    $MONOREPO_SCRIPT_DIR/rewrite_history_from.sh $SUBDIRECTORY 7.x-1.x $(git tag)
+    git checkout 8.x-2.x
+    $MONOREPO_SCRIPT_DIR/rewrite_history_from.sh $SUBDIRECTORY 8.x-2.x $(git tag)
     if [ $? -eq 0 ]; then
-        echo "Pushing branch '7.x-1.x' and all tags into '$REMOTE'"
-        git push --tags $REMOTE 7.x-1.x
+        echo "Pushing branch '8.x-2.x' and all tags into '$REMOTE'"
+        git push --tags $REMOTE 8.x-2.x
     else
         echo "Splitting repository for the remote '$REMOTE' failed! Not pushing anything into it."
     fi
